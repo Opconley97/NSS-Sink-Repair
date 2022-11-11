@@ -1,5 +1,41 @@
 {
-  "plumbers": [],
+  "plumbers": [
+    {
+      "name": "Maude",
+      "id": 1
+    },
+    {
+      "name": "Merle",
+      "id": 2
+    }
+  ],
   "completions": [],
-  "requests": []
+  "requests": [
+    {
+      "description": "Today",
+      "address": "123 Today",
+      "budget": "1500.00",
+      "neededBy": "2023-01-01",
+      "id": 1
+    },
+    {
+      "description": "123",
+      "address": "123",
+      "budget": "123",
+      "neededBy": "2023-01-01",
+      "id": 3
+    },
+    {
+      "requestId": "1",
+      "plumberId": "1",
+      "date_created": "Fri Nov 11 2022",
+      "id": 4
+    },
+    {
+      "requestId": "3",
+      "plumberId": "2",
+      "date_created": "Fri Nov 11 2022",
+      "id": 5
+    }
+  ]
 }

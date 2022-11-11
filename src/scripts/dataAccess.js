@@ -18,6 +18,11 @@ export const fetchRequests = () => {
 export const getRequests = () => {
     return applicationState.requests.map(request => ({...request}))
 }
+
+export const getPlumbers = () => {
+    return applicationState.plumbers.map(plumber => ({...plumber}))
+}
+
 export const sendRequest = (userServiceRequest) => {
     const fetchOptions = {
         method: "POST",
@@ -52,4 +57,29 @@ export const fetchPlumbers = () => {
                 applicationState.plumbers = data
             }
         )
+}
+
+export const saveCompletion = (completionObj) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(completionObj)
+    }
+    return fetch(`${API}/requests`, fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        mainCointainer.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+    .then(response => response.json())
+    .then(
+        (data => (
+            applicationState.completions = data
+        ))
+    )
 }
