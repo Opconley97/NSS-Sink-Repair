@@ -67,7 +67,7 @@ export const saveCompletion = (completionObj) => {
         },
         body: JSON.stringify(completionObj)
     }
-    return fetch(`${API}/requests`, fetchOptions)
+    return fetch(`${API}/completions`/*This was requests*/, fetchOptions)
     .then(response => response.json())
     .then(() => {
         mainCointainer.dispatchEvent(new CustomEvent("stateChanged"))
@@ -82,4 +82,8 @@ export const fetchCompletions = () => {
             applicationState.completions = data
         ))
     )
+}
+
+export const getCompletions = () => {
+    return applicationState.completions.map(completed => ({...completed}))
 }

@@ -1,5 +1,6 @@
 import { Requests } from "./Requests.js"
 import { ServiceForm } from "./ServiceForm.js"
+import { Completions } from "./Completions.js"
 
 
 export const SinkRepair = () => {
@@ -13,6 +14,10 @@ export const SinkRepair = () => {
         <h2>Service Requests</h2>
         ${Requests()}
     </section>
+
+    <section class="completions">
+        <h2>Completed Requests</h2>
+        ${Completions()}
     `
 }
 

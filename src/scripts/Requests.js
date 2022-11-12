@@ -2,6 +2,7 @@ import { getRequests } from "./dataAccess.js"
 import { fetchPlumbers } from "./dataAccess.js"
 import { getPlumbers } from "./dataAccess.js"
 import { saveCompletion } from "./dataAccess.js"
+import { fetchCompletions } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
 
