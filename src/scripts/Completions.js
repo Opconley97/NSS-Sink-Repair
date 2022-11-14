@@ -1,24 +1,41 @@
-import { getPlumbers , getRequests , getCompletions } from "./dataAccess.js";
+import { getPlumbers , getRequests , getCompletions , fetchPlumbers } from "./dataAccess.js";
 
 /*How do I make this cleaner, and how do I get all completed requests to show up?
 It's only doing one iteration then stopping.*/
 
-export const Completions = () => {
+const filterCompletions = (complete) => {
+
     const plumbers = getPlumbers();
     const requests = getRequests();
-    const completed = getCompletions();
-  
-    for (const plumber of plumbers) {
-        for (const request of requests) {
-            for (const complete of completed) {
-                if (plumber.id === parseInt(complete.plumberId)) {
-                    if (request.id === parseInt(complete.requestId)) {
-                        return `<li>${request.description} was completed by
-                        ${plumber.name}
-                        </li>`
-                    }
-                }
+
+    const foundPlumber = plumbers.find(
+        (plumber) => {
+            if (plumber.id === parseInt(complete.plumberId)) {
+                return complete.plumberName = plumber.name
             }
         }
-    }
+    )
+
+
+    const foundRequest = requests.find(
+        (request) => {
+            if (request.id === parseInt(complete.requestId)) {
+                return complete.description = request.description
+            }
+        }
+    )
+
+    return `<li>
+        ${complete.description} was completed by ${complete.plumberName}
+        </li>`
+}
+
+
+export const Completions = () => {
+    const completed = getCompletions();
+    let html = "<ul>"
+    const completedItems = completed.map(filterCompletions)
+    html += completedItems.join("")
+    html += "</ul>"
+    return html
 }
